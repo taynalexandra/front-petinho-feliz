@@ -1,0 +1,11 @@
+.logo_login_cadastro {
+  width: 30%;
+  margin-left: 35%;
+}
+
+@media screen and (max-width: 860px) {
+  .logo_login_cadastro {
+    width: 50%;
+    margin-left: 25%;
+  }
+}

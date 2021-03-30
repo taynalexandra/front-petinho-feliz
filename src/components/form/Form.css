@@ -1,0 +1,215 @@
+.login__bloco {
+  margin-top: 5%;
+}
+
+.cadastro__bloco {
+  margin-top: 5%;
+}
+
+.link_login {
+  text-decoration: none;
+  margin-top: 20px;
+  margin-left: 15%;
+  margin-right: 10%;
+  margin-bottom: 5%;
+}
+
+.link_cadastro {
+  text-decoration: none;
+  margin-top: 20px;
+  margin-left: 33%;
+  margin-right: 10%;
+  margin-bottom: 5%;
+}
+
+.div_button_cadastro {
+  display: flex;
+  align-items: center;
+}
+
+.div_button_login {
+  display: flex;
+  align-items: center;
+}
+
+.div_button_edit {
+  display: flex;
+  align-items: center;
+}
+
+.form__bloco {
+  background-color: #c5c4c5;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 32%;
+  margin-right: 32%;
+}
+
+.form-titulo {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #615e5e;
+}
+
+.form__group {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.form__label {
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-left: 13%;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555555;
+}
+
+.form__group input {
+  border: 1px solid #AAAAAA;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  height: 36px;
+  width: 75%;
+  padding: 0 10px;
+  transition: all .2s linear;
+  outline: none;
+}
+
+.form__radio {
+  margin: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555555;
+  margin-left: 15%;
+}
+
+.form__radio input{
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.form__btn-login {
+  background: #f5b32f;
+  color: #fdfdfd;
+  padding: .5rem 2rem;
+  border: none;
+  border-radius: 5px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 0%;
+  outline: none;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .5);
+}
+
+.form__btn-cadastro {
+  background: #f5b32f;
+  color: #fdfdfd;
+  padding: .5rem 2rem;
+  border: none;
+  border-radius: 5px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 0%;
+  outline: none;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .5);
+}
+
+.form__btn-edit {
+  background: #f5b32f;
+  color: #fdfdfd;
+  padding: .5rem 2rem;
+  border: none;
+  border-radius: 5px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 0%;
+  outline: none;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .5);
+}
+
+.form__btn-delete {
+  background: #f12020;
+  color: #fdfdfd;
+  padding: .5rem 2rem;
+  border: none;
+  border-radius: 5px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 10%;
+  margin-right: 39px;
+  outline: none;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .5);
+}
+
+.form__btn-cadastrar-pet{
+  background: #f5b32f;
+  color: #fdfdfd;
+  padding: .5rem 2rem;
+  border: none;
+  border-radius: 5px;
+  margin-top: 1.3rem;
+  margin-bottom: 2rem;
+  margin-left: 53%;
+  outline: none;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .5);
+}
+
+.form__btn:hover {
+  background: #fca904;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 860px) {
+  * {
+    max-width: 100%;
+  }
+
+  .form__bloco {
+    margin: 10%;
+  }
+
+  .form__group {
+    display: flex;   
+    align-items: center;
+  }
+
+  .form__radio {
+    margin-left: 10%;
+  }
+
+  .form__group input {
+    width: 80%;
+  }
+
+  .form__label {
+    margin-left: 10%;
+  } 
+
+  .form__btn-login {
+    margin-left: 0%;
+  }
+
+  .form__btn-cadastro {
+    margin-left: 0%;
+  }
+
+  .link_login {
+    margin-left: 15%;
+    margin-right: 10%;
+    margin-bottom: 5%;
+  }
+
+  .link_cadastro {
+    margin-left: 27%;
+    margin-right: 10%;
+    margin-bottom: 5%;
+  }
+}
