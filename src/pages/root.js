@@ -17,10 +17,10 @@ const Root = () => {
   return (
     <Router>
       <Switch>
-        <PrivateRoute path="/" exact component={PagesHome} />
+        <Route path="/" exact component={PagesHome} />
         <Route path="/login" exact component={PagesLogin} />
         <Route path="/cadastro" exact component={PagesCadastro} />
-        <PrivateRoute path="/home" exact component={PagesHome} />
+        <Route path="/home" exact component={PagesHome} />
         <PrivateRoute path="/perfil" exact component={PagesPerfil} />
       </Switch>
     </Router>

@@ -7,16 +7,20 @@ import './Modal.css';
 
 const initialValue = {
   token: '',
-  nome: '',
-  idadeMeses: '',
-  genero: '',
-  raca: '',
-  pesoKg: '',
-  alturaCm: '',
-  fkDoador: ''
+  idDoador: '',
+  logradouro: '',
+  numero: '',
+  bairro: '',
+  cep: '',
+  referencia: '',
+  cidade: '',
+  estado: '',
+  coordenadaLatitude: '',
+  coordenadaLongitude: '',
+  andar: ''
 }
 
-export const PetModal = ({ showModal, setShowModal }) => {
+export const PetModal = ({ showModalEnd, setShowModalEnd }) => {
   const [values, setValues] = useState(initialValue);
 
   function onChange(ev) {
@@ -28,11 +32,10 @@ export const PetModal = ({ showModal, setShowModal }) => {
   function onSubmit(ev) {
     ev.preventDefault();
 
-    console.log(ev.values);
     const storage = JSON.parse(localStorage.getItem('app-token'));
 
     values.token = storage.resultado.token;
-    values.fkDoador = storage.resultado.dadosUsuario[0].id_doador;
+    values.idDoador = storage.resultado.dadosUsuario[0].id_doador;
 
     console.log(values);
 
@@ -47,7 +50,7 @@ export const PetModal = ({ showModal, setShowModal }) => {
 
     xhttp.onreadystatechange = function () {//Call a function when the state changes.
       if (xhttp.readyState === 4 && xhttp.status === 200) {
-        setShowModal(false);
+        setShowModalEnd(false);
       }
     }
     xhttp.send(json);
@@ -61,13 +64,13 @@ export const PetModal = ({ showModal, setShowModal }) => {
     config: {
       duration: 250
     },
-    opacity: showModal ? 1 : 0,
-    transform: showModal ? `translateY(0%)` : `translateY(-100%)`
+    opacity: showModalEnd ? 1 : 0,
+    transform: showModalEnd ? `translateY(0%)` : `translateY(-100%)`
   });
 
   const closeModal = e => {
     if (modalRef.current === e.target) {
-      setShowModal(false);
+      setShowModalEnd(false);
     }
   };
 
@@ -76,58 +79,59 @@ export const PetModal = ({ showModal, setShowModal }) => {
       {showModal ? (
         <div className="background-modal" ref={modalRef} onClick={closeModal}>
           <animated.div style={animation}>
-            <div className="wrapper-modal" showModal={showModal}>
+            <div className="wrapper-modal" showModalEnd={showModalEnd}>
               <div className="content-modal">
                 <div className="form-titulo">
-                  <h2>Cadastrar Pet</h2>
+                  <h2>Cadastrar Endereço</h2>
                 </div>
                 <div>
-                  <form className="cadastro-pet-form" onSubmit={onSubmit}>
+                  <form className="cadastro-endereco-form" onSubmit={onSubmit}>
                     <div className="form__label">
-                      <label htmlFor="nome">Nome do pet</label>
+                      <label htmlFor="logradouro">Logradouro</label>
                     </div>
                     <div className="form__group">
-                      <input id="nome" name="nome" type="text" required onChange={onChange} />
+                      <input id="logradouro" name="logradouro" type="text" required onChange={onChange} />
                     </div>
                     <div className="form__label">
-                      <label htmlFor="idadeMeses">Idade (meses)</label>
+                      <label htmlFor="numero">Número</label>
                     </div>
                     <div className="form__group">
-                      <input id="idadeMeses" name="idadeMeses" type="number" required onChange={onChange} />
+                      <input id="numero" name="numero" type="number" required onChange={onChange} />
+                    </div>
+                    <div className="form__label">
+                      <label htmlFor="bairro">Bairro</label>
+                    </div>
+                    <div className="form__group">
+                      <input id="bairro" name="bairro" type="text" required onChange={onChange} />
                     </div>
 
                     <div className="form__label">
-                      <label htmlFor="genero">Genero</label>
+                      <label htmlFor="cep">Cep</label>
                     </div>
-                    <div className="form__radio">
-                      <input type="radio" id="macho" name="genero" value="macho" onChange={onChange} />
-                      <label htmlFor="macho">Macho</label>
-                      <input type="radio" id="femea" name="genero" value="femea" onChange={onChange} />
-                      <label htmlFor="femea">Fêmea</label>
+                    <div className="form__group">
+                      <input id="cep" name="cep" type="text" required onChange={onChange} />
                     </div>
 
                     <div className="form__label">
-                      <label htmlFor="raca">Raça</label>
+                      <label htmlFor="referencia">Ponto de Referência</label>
                     </div>
                     <div className="form__group">
-                      <input id="raca" name="raca" type="text" required onChange={onChange} />
+                      <input id="referencia" name="referencia" type="text" required onChange={onChange} />
                     </div>
-
                     <div className="form__label">
-                      <label htmlFor="pesoKg">Peso (Kg)</label>
+                      <label htmlFor="cidade">Cidade</label>
                     </div>
                     <div className="form__group">
-                      <input id="pesoKg" name="pesoKg" type="number" required onChange={onChange} />
+                      <input id="cidade" name="cidade" type="text" required onChange={onChange} />
                     </div>
-
                     <div className="form__label">
-                      <label htmlFor="alturaCm">Altura (Cm)</label>
+                      <label htmlFor="estado">Estado</label>
                     </div>
                     <div className="form__group">
-                      <input id="alturaCm" name="alturaCm" type="number" required onChange={onChange} />
+                      <input id="estado" name="estado" type="text" required onChange={onChange} />
                     </div>
                     <div>
-                      <button type="submit" className="form__btn-cadastrar-pet">Cadastrar</button>
+                      <button type="submit" className="form__btn-cadastrar-endereco">Cadastrar</button>
                     </div>
                   </form>
                 </div>

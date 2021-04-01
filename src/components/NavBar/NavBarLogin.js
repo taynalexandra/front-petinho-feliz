@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { MenuItemsLogin } from './MenuItemsLogin';
 import './NavBar.css';
 
 class NavbarLogged extends Component {
@@ -31,22 +30,54 @@ class NavbarLogged extends Component {
           <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
         </div>
         <ul className={this.state.clicked ? 'nav-menu-logged active' : 'nav-menu-logged'}>
-          {MenuItemsLogin.map((item, index) => {
-            return (
-              <li key={index} className={item.cName}>
-                <a href={item.url}>
-                  {item.title}
-                </a>
+          {localStorage.getItem('app-token') ?
+            <>
+              <li className="nav-links-geral">
+                <a href="/home">
+                  Home
+        </a>
               </li>
-            )
-          })}
-          <li className="nav-links-sair">
-            <button id="nav-links-sair" onClick={this.singOut}>
-              Sair
+              <li className="nav-links-geral">
+                <a href="/#">
+                  Denuncie
+        </a>
+              </li>
+              <li className="nav-links-geral">
+                <a href="/perfil">
+                  Perfil
+        </a>
+              </li>
+              <li className="nav-links-sair">
+                <button id="nav-links-sair" onClick={this.singOut}>
+                  Sair
              <i className="fas fa-sign-out-alt"> </i>
-            </button>
-          </li>
-
+                </button>
+              </li>
+            </>
+            :
+            <>
+              <li className="nav-links-geral">
+                <a href="/home">
+                  Home
+              </a>
+              </li>
+              <li className="nav-links-geral">
+                <a href="/#">
+                  Denuncie
+              </a>
+              </li>
+              <li className="nav-links-geral">
+                <a href="/login">
+                  Login
+              </a>
+              </li>
+              <li className="nav-links-geral">
+                <a href="/cadastro">
+                  Cadastro
+              </a>
+              </li>
+            </>
+          }
         </ul>
       </nav>
     )

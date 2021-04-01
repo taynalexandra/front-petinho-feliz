@@ -24,7 +24,7 @@ const FormEdit = () => {
 
   useEffect(() => {
     getTokenAdmin();
-
+    //const storage = JSON.parse(localStorage.getItem('app-token'));
 
 
     //const storage = JSON.parse(localStorage.getItem('app-token'));

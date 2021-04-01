@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Logo from "../Logo/Logo";
 import './Form.css';
 
 const initialValue = {
@@ -51,7 +50,6 @@ const FormCadastro = () => {
 
   return (
     <div className="cadastro__bloco">
-      <Logo />
       <div className="form__bloco">
         <div className="form-titulo">
           <h2>Realizar Cadastro</h2>
