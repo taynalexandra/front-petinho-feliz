@@ -32,7 +32,7 @@ const FormCadastro = () => {
     ev.preventDefault();
 
     var json = JSON.stringify(values);
-
+    console.log(values);
     var xhttp = new XMLHttpRequest();
     var url = 'https://api-petinho-feliz.000webhostapp.com/api-petinho-feliz/index.php/UsuarioControl/cadastrarUsuario';
     xhttp.open('POST', url, true);

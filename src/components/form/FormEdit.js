@@ -24,6 +24,7 @@ const FormEdit = () => {
 
   useEffect(() => {
     getTokenAdmin();
+
     //const storage = JSON.parse(localStorage.getItem('app-token'));
 
 
@@ -49,11 +50,33 @@ const FormEdit = () => {
 
     xhttp.onreadystatechange = function () {//Call a function when the state changes.
       if (xhttp.readyState === 4 && xhttp.status === 200) {
-        console.log(JSON.parse(this.responseText).resultado.token)
+        getUsers(JSON.parse(this.responseText).resultado.token);
         //var tokenAdmin = JSON.parse(this.responseText).resultado.token;
       }
     }
     xhttp.send(json);
+  }
+
+  function getUsers(token) {
+    var tokenAdmin = {
+      token: token
+    }
+
+    tokenAdmin = JSON.stringify(tokenAdmin);
+    console.log(tokenAdmin);
+
+    var xhttp = new XMLHttpRequest();
+    var url = 'https://api-petinho-feliz.000webhostapp.com/api-petinho-feliz/index.php/UsuarioControl/listarUsuarios';
+    xhttp.open('POST', url, true);
+
+    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    xhttp.onreadystatechange = function () {//Call a function when the state changes.
+      if (xhttp.readyState === 4 && xhttp.status === 200) {
+        console.log(this.responseText);
+      }
+    }
+    xhttp.send(tokenAdmin);
   }
 
   function onChange(ev) {

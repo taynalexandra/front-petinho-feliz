@@ -17,7 +17,18 @@
   position: relative;
   z-index: 4;
   overflow:auto;
-  border-radius: 5px;
+  margin-top: 0px;
+}
+
+.wrapper-modal-end {
+  width: 360px;
+  height: 600px;
+  box-shadow: 0 5px 16px rgba(0,0,0,0.2);
+  background: #fff;
+  color: #000;
+  position: relative;
+  z-index: 4;
+  overflow:auto;
   margin-top: 0px;
 }
 

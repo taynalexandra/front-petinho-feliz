@@ -16,7 +16,7 @@ const initialValue = {
   fkDoador: ''
 }
 
-export const PetModal = ({ showModal, setShowModal }) => {
+export const PetModal = ({ showModalPet, setShowModalPet }) => {
   const [values, setValues] = useState(initialValue);
 
   function onChange(ev) {
@@ -28,7 +28,6 @@ export const PetModal = ({ showModal, setShowModal }) => {
   function onSubmit(ev) {
     ev.preventDefault();
 
-    console.log(ev.values);
     const storage = JSON.parse(localStorage.getItem('app-token'));
 
     values.token = storage.resultado.token;
@@ -47,7 +46,7 @@ export const PetModal = ({ showModal, setShowModal }) => {
 
     xhttp.onreadystatechange = function () {//Call a function when the state changes.
       if (xhttp.readyState === 4 && xhttp.status === 200) {
-        setShowModal(false);
+        setShowModalPet(false);
       }
     }
     xhttp.send(json);
@@ -61,22 +60,22 @@ export const PetModal = ({ showModal, setShowModal }) => {
     config: {
       duration: 250
     },
-    opacity: showModal ? 1 : 0,
-    transform: showModal ? `translateY(0%)` : `translateY(-100%)`
+    opacity: showModalPet ? 1 : 0,
+    transform: showModalPet ? `translateY(0%)` : `translateY(-100%)`
   });
 
   const closeModal = e => {
     if (modalRef.current === e.target) {
-      setShowModal(false);
+      setShowModalPet(false);
     }
   };
 
   return (
     <>
-      {showModal ? (
+      {showModalPet ? (
         <div className="background-modal" ref={modalRef} onClick={closeModal}>
           <animated.div style={animation}>
-            <div className="wrapper-modal" showModal={showModal}>
+            <div className="wrapper-modal" showModal={showModalPet}>
               <div className="content-modal">
                 <div className="form-titulo">
                   <h2>Cadastrar Pet</h2>
@@ -132,7 +131,7 @@ export const PetModal = ({ showModal, setShowModal }) => {
                   </form>
                 </div>
               </div>
-              <CloseModalButton className="btnClose-modal" aria-label='Close modal' onClick={() => setShowModal(prev => !prev)} />
+              <CloseModalButton className="btnClose-modal" aria-label='Close modal' onClick={() => setShowModalPet(prev => !prev)} />
             </div>
           </animated.div>
         </div>

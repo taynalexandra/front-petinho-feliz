@@ -20,7 +20,7 @@ const initialValue = {
   andar: ''
 }
 
-export const PetModal = ({ showModalEnd, setShowModalEnd }) => {
+export const EnderecoModal = ({ showModalEnd, setShowModalEnd }) => {
   const [values, setValues] = useState(initialValue);
 
   function onChange(ev) {
@@ -37,12 +37,30 @@ export const PetModal = ({ showModalEnd, setShowModalEnd }) => {
     values.token = storage.resultado.token;
     values.idDoador = storage.resultado.dadosUsuario[0].id_doador;
 
-    console.log(values);
+    if ((document.getElementById("numAndar").value !== "") && (document.getElementById("numPorta").value !== "")) {
+      values.andar = {
+        numAndar: document.getElementById("numAndar").value,
+        numPorta: document.getElementById("numPorta").value
+      }
+    } else {
+      values.andar = null;
+    }
+    delete values.numAndar;
+    delete values.numPorta;
 
+    fetch(`https://nominatim.openstreetmap.org/search.php?postalcode=${values.cep}&street=${values.numero}+${values.logradouro}&city=${values.cidade}&format=json`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((myJson) => {
+        values.coordenadaLatitude = myJson[0].lat;
+        values.coordenadaLongitude = myJson[0].lon;
+      });
+    
     var json = JSON.stringify(values);
 
     var xhttp = new XMLHttpRequest();
-    var url = 'https://api-petinho-feliz.000webhostapp.com/api-petinho-feliz/index.php/PetControl/cadastrarPet';
+    var url = 'https://api-petinho-feliz.000webhostapp.com/api-petinho-feliz/index.php/EnderecoControl/cadastrarEndereco';
     xhttp.open('POST', url, true);
 
     //Send the proper header information along with the request
@@ -76,10 +94,10 @@ export const PetModal = ({ showModalEnd, setShowModalEnd }) => {
 
   return (
     <>
-      {showModal ? (
+      {showModalEnd ? (
         <div className="background-modal" ref={modalRef} onClick={closeModal}>
           <animated.div style={animation}>
-            <div className="wrapper-modal" showModalEnd={showModalEnd}>
+            <div className="wrapper-modal-end" showModalEnd={showModalEnd}>
               <div className="content-modal">
                 <div className="form-titulo">
                   <h2>Cadastrar Endereço</h2>
@@ -113,10 +131,10 @@ export const PetModal = ({ showModalEnd, setShowModalEnd }) => {
                     </div>
 
                     <div className="form__label">
-                      <label htmlFor="referencia">Ponto de Referência</label>
+                      <label htmlFor="referencia">Ponto de Referência (opcional)</label>
                     </div>
                     <div className="form__group">
-                      <input id="referencia" name="referencia" type="text" required onChange={onChange} />
+                      <input id="referencia" name="referencia" type="text" onChange={onChange} />
                     </div>
                     <div className="form__label">
                       <label htmlFor="cidade">Cidade</label>
@@ -130,13 +148,25 @@ export const PetModal = ({ showModalEnd, setShowModalEnd }) => {
                     <div className="form__group">
                       <input id="estado" name="estado" type="text" required onChange={onChange} />
                     </div>
+                    <div className="form__label">
+                      <label htmlFor="numAndar">Número do Andar (opcional)</label>
+                    </div>
+                    <div className="form__group">
+                      <input id="numAndar" name="numAndar" type="number" onChange={onChange} />
+                    </div>
+                    <div className="form__label">
+                      <label htmlFor="numPorta">Número da Porta (opcional)</label>
+                    </div>
+                    <div className="form__group">
+                      <input id="numPorta" name="numPorta" type="number" onChange={onChange} />
+                    </div>
                     <div>
                       <button type="submit" className="form__btn-cadastrar-endereco">Cadastrar</button>
                     </div>
                   </form>
                 </div>
               </div>
-              <CloseModalButton className="btnClose-modal" aria-label='Close modal' onClick={() => setShowModal(prev => !prev)} />
+              <CloseModalButton className="btnClose-modal" aria-label='Close modal' onClick={() => setShowModalEnd(prev => !prev)} />
             </div>
           </animated.div>
         </div>
