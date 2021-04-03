@@ -55,9 +55,16 @@ export const EnderecoModal = ({ showModalEnd, setShowModalEnd }) => {
       .then((myJson) => {
         values.coordenadaLatitude = myJson[0].lat;
         values.coordenadaLongitude = myJson[0].lon;
+        
+        cadastrarEndereco();
       });
     
+    
+  }
+
+  function cadastrarEndereco() {
     var json = JSON.stringify(values);
+    console.log(json);
 
     var xhttp = new XMLHttpRequest();
     var url = 'https://api-petinho-feliz.000webhostapp.com/api-petinho-feliz/index.php/EnderecoControl/cadastrarEndereco';

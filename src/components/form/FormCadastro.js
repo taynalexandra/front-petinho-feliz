@@ -15,7 +15,6 @@ const initialValue = {
   nome: '',
   cpf: '',
   genero: ''
-
 }
 
 const FormCadastro = () => {
