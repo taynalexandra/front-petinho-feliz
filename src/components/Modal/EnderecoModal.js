@@ -58,8 +58,6 @@ export const EnderecoModal = ({ showModalEnd, setShowModalEnd }) => {
         
         cadastrarEndereco();
       });
-    
-    
   }
 
   function cadastrarEndereco() {

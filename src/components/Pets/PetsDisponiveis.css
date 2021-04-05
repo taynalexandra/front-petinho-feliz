@@ -1,0 +1,24 @@
+.div-pet {
+  background-color: #f5b32f;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 12px;
+  color: rgb(112, 114, 116);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+}
+
+.dados-pet {
+  margin-left: 2%;
+  margin-right: 0;
+}
+
+.div-pet img {
+  max-width: 90px;
+}
+

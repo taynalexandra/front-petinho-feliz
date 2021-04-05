@@ -1,14 +1,64 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import { PetModal } from '../Modal/PetModal';
 import { EnderecoModal } from '../Modal/EnderecoModal';
+import { MapMarker } from './MapMarker';
+import { PetsDisponiveis } from '../Pets/PetsDisponiveis';
 
 import './MapView.css';
 import 'leaflet/dist/leaflet.css';
 
+var petList = "";
+
 const MapView = () => {
   const [showModalPet, setShowModalPet] = useState(false);
   const [showModalEnd, setShowModalEnd] = useState(false);
+
+  const [enderecos, setEnderecos] = useState([]);
+  const [token, setToken] = useState("");
+  useEffect(() => {
+    getTokenAdmin();
+  }, []);
+
+  function getTokenAdmin() {
+    var json = {
+      "email": "adminpetinhofeliz@gmail.com",
+      "senha": "Ad1m1nP3t1nh0tgm"
+    };
+    json = JSON.stringify(json);
+
+    var xhttp = new XMLHttpRequest();
+    var url = 'https://api-petinho-feliz.000webhostapp.com/api-petinho-feliz/index.php/UsuarioControl/autenticarUsuario';
+    xhttp.open('POST', url, false);
+
+    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    xhttp.onreadystatechange = function () {//Call a function when the state changes.
+      if (xhttp.readyState === 4 && xhttp.status === 200) {
+        getEndereco(JSON.parse(this.responseText).resultado.token);
+      }
+    }
+    xhttp.send(json);
+  }
+
+  function getEndereco(token) {
+    var tokenUser = {
+      token: token
+    }
+    tokenUser = JSON.stringify(tokenUser);
+
+    var xhttp = new XMLHttpRequest();
+    var url = 'https://api-petinho-feliz.000webhostapp.com/api-petinho-feliz/index.php/EnderecoControl/listarEnderecos';
+    xhttp.open('POST', url, true);
+    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhttp.onreadystatechange = function () {//Call a function when the state changes.
+      if (xhttp.readyState === 4 && xhttp.status === 200) {
+        setToken(token);
+        setEnderecos(JSON.parse(this.responseText).resultado);
+      }
+    }
+    xhttp.send(tokenUser);
+  }
 
   const openModal = () => {
     const storage = JSON.parse(localStorage.getItem('app-token'));
@@ -22,7 +72,7 @@ const MapView = () => {
 
     var xhttp = new XMLHttpRequest();
     var url = 'https://api-petinho-feliz.000webhostapp.com/api-petinho-feliz/index.php/EnderecoControl/pegarEnderecoPeloIdDoador';
-    xhttp.open('POST', url, true);
+    xhttp.open('POST', url, false);
 
     xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
@@ -51,9 +101,21 @@ const MapView = () => {
         <div className="form-titulo">
           <h2>Pets Disponíveis para Adoção</h2>
         </div>
-        <MapContainer center={{ lat: '-8.0594845', lng: '-34.9527856' }} zoom={13}>
+        <MapContainer center={{ lat: '-8.0594845', lng: '-34.9527856' }} zoom={11}>
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' />
+          {
+            enderecos.map((endereco) => (
+              <MapMarker key={endereco.id_endereco} endereco={endereco} />
+            ))
+          }
         </MapContainer >
+        <div className="div-pets-cadastrados" id="div-pets-cadastrados">
+          {
+            enderecos.map((endereco) => (
+              <PetsDisponiveis key={endereco.id_endereco} endereco={endereco} token={token} />
+            ))
+          }
+        </div>
       </div>
     </div>
 

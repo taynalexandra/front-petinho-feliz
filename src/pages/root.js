@@ -8,6 +8,7 @@ import PagesHome from './home/Home';
 import PagesCadastro from './cadastro/Cadastro';
 import PagesLogin from './login/Login';
 import PagesPerfil from './perfil/Perfil';
+import PagesDenuncia from './denuncia/Denuncia';
 
 import PrivateRoute from '../components/PrivateRoute';
 
@@ -21,6 +22,7 @@ const Root = () => {
         <Route path="/login" exact component={PagesLogin} />
         <Route path="/cadastro" exact component={PagesCadastro} />
         <Route path="/home" exact component={PagesHome} />
+        <Route path="/denuncie" exact component={PagesDenuncia} />
         <PrivateRoute path="/perfil" exact component={PagesPerfil} />
       </Switch>
     </Router>

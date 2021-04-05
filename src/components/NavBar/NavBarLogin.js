@@ -38,7 +38,7 @@ class NavbarLogged extends Component {
         </a>
               </li>
               <li className="nav-links-geral">
-                <a href="/#">
+                <a href="/denuncie">
                   Denuncie
         </a>
               </li>
@@ -62,7 +62,7 @@ class NavbarLogged extends Component {
               </a>
               </li>
               <li className="nav-links-geral">
-                <a href="/#">
+                <a href="/denuncie">
                   Denuncie
               </a>
               </li>
