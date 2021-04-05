@@ -99,7 +99,7 @@ const FormCadastro = () => {
 
           <div className="form__radio">
 
-            <input type="radio" id="cuidador" name="tipoUsuario" value="cuidador" onChange={onChange} onClick={exibirCuidador} Checked />
+            <input type="radio" id="cuidador" name="tipoUsuario" value="cuidador" required onChange={onChange} onClick={exibirCuidador} Checked />
             <label htmlFor="cuidador">Cuidador</label>
             <input type="radio" id="estabelecimento" name="tipoUsuario" value="estabelecimento" onChange={onChange} onClick={exibirEstabelecimento} />
             <label htmlFor="estabelecimento">Estabelecimento</label>
@@ -143,7 +143,7 @@ const FormCadastro = () => {
           </div>
 
           <div id="genero" className="form__radio">
-            <input type="radio" id="masculino" name="genero" value="masculino" onChange={onChange} />
+            <input type="radio" id="masculino" name="genero" value="masculino" required onChange={onChange} />
             <label htmlFor="masculino">Masculino</label>
             <input type="radio" id="feminino" name="genero" value="feminino" onChange={onChange} />
             <label htmlFor="feminino">Feminino</label>
