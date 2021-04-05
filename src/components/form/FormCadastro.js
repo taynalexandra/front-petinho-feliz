@@ -28,7 +28,7 @@ const FormCadastro = () => {
     setValues({ ...values, [name]: value });
   }
 
-  function exibirCuidador(){
+  function exibirCuidador() {
     $("#nome_label").show();
     $("#cpf_label").show();
     $("#genero_label").show();
@@ -42,7 +42,7 @@ const FormCadastro = () => {
     $("#cnpj").hide();
   }
 
-  function exibirEstabelecimento(){
+  function exibirEstabelecimento() {
     $("#empresa_label").show();
     $("#cnpj_label").show();
     $("#empresa").show();
@@ -77,7 +77,7 @@ const FormCadastro = () => {
   }
 
 
-  $(window).on("load", function(){
+  $(window).on("load", function () {
     $("#empresa_label").hide();
     $("#cnpj_label").hide();
     $("#empresa").hide();
@@ -98,12 +98,12 @@ const FormCadastro = () => {
           </div>
 
           <div className="form__radio">
-          
-            <input type="radio" id="cuidador" name="tipoUsuario" value="cuidador" onClick={exibirCuidador} defaultChecked/>
+
+            <input type="radio" id="cuidador" name="tipoUsuario" value="cuidador" onChange={onChange} onClick={exibirCuidador} Checked />
             <label htmlFor="cuidador">Cuidador</label>
-            <input type="radio" id="estabelecimento" name="tipoUsuario" value="estabelecimento" onClick={exibirEstabelecimento} />
+            <input type="radio" id="estabelecimento" name="tipoUsuario" value="estabelecimento" onChange={onChange} onClick={exibirEstabelecimento} />
             <label htmlFor="estabelecimento">Estabelecimento</label>
-            
+
           </div>
 
           <div className="form__label">
@@ -139,7 +139,7 @@ const FormCadastro = () => {
           </div>
 
           <div className="form__label">
-            <label  id="genero_label">Gênero</label>
+            <label id="genero_label">Gênero</label>
           </div>
 
           <div id="genero" className="form__radio">
@@ -163,7 +163,7 @@ const FormCadastro = () => {
 
           <div className="form__group">
             <input id="senha" name="senha" type="password" required onChange={onChange} />
-          </div>          
+          </div>
 
           <div className="form__label">
             <label htmlFor="contato">Contato</label>
