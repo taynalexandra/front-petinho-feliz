@@ -8,8 +8,6 @@ import { PetsDisponiveis } from '../Pets/PetsDisponiveis';
 import './MapView.css';
 import 'leaflet/dist/leaflet.css';
 
-var petList = "";
-
 const MapView = () => {
   const [showModalPet, setShowModalPet] = useState(false);
   const [showModalEnd, setShowModalEnd] = useState(false);
@@ -29,7 +27,7 @@ const MapView = () => {
 
     var xhttp = new XMLHttpRequest();
     var url = 'https://api-petinho-feliz.000webhostapp.com/api-petinho-feliz/index.php/UsuarioControl/autenticarUsuario';
-    xhttp.open('POST', url, false);
+    xhttp.open('POST', url, true);
 
     xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 

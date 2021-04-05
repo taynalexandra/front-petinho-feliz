@@ -22,7 +22,7 @@ export const PetsDisponiveis = (props) => {
 
     var xhttp = new XMLHttpRequest();
     var url = 'https://api-petinho-feliz.000webhostapp.com/api-petinho-feliz/index.php/PetControl/listarPetsPorDoador';
-    xhttp.open('POST', url, false);
+    xhttp.open('POST', url, true);
     xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhttp.onreadystatechange = function () {//Call a function when the state changes.
       if (xhttp.readyState === 4 && xhttp.status === 200) {
@@ -73,7 +73,7 @@ export const PetsDisponiveis = (props) => {
               <p><b>Peso:</b> {pet.peso_kg}kg - <b>Altura:</b> {pet.altura_cm}cm</p>
               <br />
               <h4>Doador</h4>
-              <p><b>Nome:</b> {user.empresa}</p>
+              <p><b>Nome/Razão Social:</b> {user.nome}{user.empresa}</p>
               <p><b>Contato: </b>{user.contato} - {user.tipo_contato}</p>
               <p><b>Disponibilidade: </b>{user.disponibilidade_dia} ({user.disponibilidade_hora})</p>
               <br />

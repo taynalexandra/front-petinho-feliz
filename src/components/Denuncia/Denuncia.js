@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './Denuncia.css';
 
 const Denuncia = () => {
 
   return (
     <div className="div-denuncia">
-      <main class="container servicos">
-        <article class="servico bg-white radius">
-          <a href="#"><img src="maustratos.jpg" /></a>
-          <div class="inner">
+      <main className="container servicos">
+        <article className="servico bg-white radius">
+          <a href="/#"><img src="maustratos.jpg" alt="Maus tratos" /></a>
+          <div className="inner">
             <h3>O que diz a Lei</h3>
             <h4>Identificando o problema</h4>
             <p>A Constituição Federal garante a proteção da fauna e
@@ -24,9 +24,9 @@ const Denuncia = () => {
           </div>
         </article>
 
-        <article class="servico bg-white radius">
-          <a href="#"><img src="cachorro1.jpg" /></a>
-          <div class="inner">
+        <article className="servico bg-white radius">
+          <a href="/#"><img src="cachorro1.jpg" alt="Cachorro com telefone" /></a>
+          <div className="inner">
             <h3>Como denunciar</h3>
             <h4>Saiba o que fazer em caso de mais tratos</h4>
             <p>Para denunciar qualquer tipo de abuso, anote sempre
@@ -40,9 +40,9 @@ const Denuncia = () => {
           </div>
         </article>
 
-        <article class="servico bg-white radius">
-          <a href="#"><img src="caopolicial.jpg" /></a>
-          <div class="inner">
+        <article className="servico bg-white radius">
+          <a href="/#"><img src="caopolicial.jpg" alt="Cão Policial" /></a>
+          <div className="inner">
             <h3>Denuncie!</h3>
             <h4>Amanhã pode ser tarde demais</h4>
             <p>Telefones:<br /><br />
@@ -50,9 +50,9 @@ const Denuncia = () => {
                 Disque-Denúncia - 181 <br />
                   Ibama Linha Verde - 0800 61 8080</p>
             <p>Sites: <br /><br />
-              <a class="link-interno" href="http://www.ibama.gov.br/fale-com-o-ibama-rodape">Ibama</a>
+              <a className="link-interno" href="http://www.ibama.gov.br/fale-com-o-ibama-rodape">Ibama</a>
               <br />
-              <a class="link-interno" href="https://www.webdenuncia.org.br/">Web Denúncia</a>
+              <a className="link-interno" href="https://www.webdenuncia.org.br/">Web Denúncia</a>
             </p>
           </div>
         </article>

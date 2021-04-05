@@ -111,7 +111,7 @@ const FormCadastro = () => {
           </div>
 
           <div className="form__group">
-            <input id="nome" name="nome" type="text" required onChange={onChange} />
+            <input id="nome" name="nome" type="text" onChange={onChange} />
           </div>
 
           <div className="form__label">

@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
@@ -19,7 +18,6 @@ const initialValue = {
 
 export const PetModal = ({ showModalPet, setShowModalPet }) => {
   const [values, setValues] = useState(initialValue);
-  const history = useHistory();
 
   function onChange(ev) {
     const { name, value } = ev.target;
